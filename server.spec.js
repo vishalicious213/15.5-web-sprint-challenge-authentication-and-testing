@@ -20,3 +20,14 @@ describe("login", () => {
 		expect(res.body.message).toBe("Welcome vish!");
 	});
 });
+
+describe("register new user", () => {
+	it('should add a new user', async () => {
+		const res = await request(server)
+			.post("/api/auth/register")
+			.send({ username: "ella", password: "password-2" });
+		expect(res.statusCode).toBe(201);
+		expect(res.type).toBe("application/json");
+		expect(res.body.username).toBe("ella");
+	});
+});
